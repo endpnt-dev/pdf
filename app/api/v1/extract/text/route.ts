@@ -131,7 +131,20 @@ export const POST = withAuth(async (request: NextRequest, context) => {
     try {
       const result = await pdf(buffer)
 
-      const responseData = {
+      const responseData: {
+        text: string;
+        total_pages: number;
+        total_characters: number;
+        extraction_method: string;
+        preserve_layout: any;
+        metadata: {
+          info: any;
+          version: any;
+          creator: any;
+          producer: any;
+        };
+        note?: string;
+      } = {
         text: result.text || '',
         total_pages: totalPages,
         total_characters: (result.text || '').length,
@@ -147,7 +160,7 @@ export const POST = withAuth(async (request: NextRequest, context) => {
 
       // Add note if text is empty (likely scanned PDF)
       if (!result.text || result.text.trim().length === 0) {
-        responseData.note = 'No text found. This may be a scanned PDF that requires OCR (available in v2).'
+        responseData.note = 'No text found. This may be a scanned PDF. Try the /api/v1/extract/ocr endpoint for scanned documents.'
       }
 
       return successResponse(responseData, {

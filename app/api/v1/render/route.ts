@@ -45,7 +45,6 @@ export const POST = withAuth(async (request: NextRequest, context) => {
     // Load PDF with pdfjs-dist for rendering
     const loadingTask = pdfjsLib.getDocument({
       data: buffer,
-      disableWorker: true,
     })
 
     const pdfDocument = await loadingTask.promise

@@ -185,8 +185,8 @@ export default function PricingPage() {
             <div>
               <h3 className="text-lg font-semibold mb-2">What about OCR for scanned PDFs?</h3>
               <p className="text-muted-foreground">
-                OCR is coming in v2 after our infrastructure upgrade. Current text extraction
-                works great for text-based PDFs.
+                OCR is now available via the /api/v1/extract/ocr endpoint for scanned documents.
+                Regular text extraction works great for text-based PDFs.
               </p>
             </div>
 

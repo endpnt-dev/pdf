@@ -73,7 +73,7 @@ export const POST = withAuth(async (request: NextRequest, context) => {
         if (title) mergedPdf.setTitle(title)
         if (author) mergedPdf.setAuthor(author)
         if (subject) mergedPdf.setSubject(subject)
-        if (keywords) mergedPdf.setKeywords(keywords)
+        if (keywords) mergedPdf.setKeywords(Array.isArray(keywords) ? keywords : [keywords])
         if (creator) mergedPdf.setCreator(creator)
 
         // Set producer to indicate this was created by endpnt
