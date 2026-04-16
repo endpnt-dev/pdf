@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  serverExternalPackages: [
-    '@napi-rs/canvas',
-    'pdf-lib',
-    'pdf-parse',
-    'pdfjs-dist',
-    'sharp',
-  ],
-  turbopack: {},
+  experimental: {
+    serverComponentsExternalPackages: [
+      '@napi-rs/canvas',
+      'pdf-lib',
+      'pdf-parse',
+      'pdfjs-dist',
+      'sharp',
+    ],
+  },
   images: {
     remotePatterns: [
       {
@@ -20,6 +21,15 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+  },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = [
+        ...(config.externals || []),
+        { '@napi-rs/canvas': 'commonjs @napi-rs/canvas' },
+      ];
+    }
+    return config;
   },
 };
 
