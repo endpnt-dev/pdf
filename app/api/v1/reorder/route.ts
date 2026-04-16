@@ -47,7 +47,7 @@ export const POST = withAuth(async (request: NextRequest, context) => {
   if (originalTitle) newPdfDoc.setTitle(originalTitle)
   if (originalAuthor) newPdfDoc.setAuthor(originalAuthor)
   if (originalSubject) newPdfDoc.setSubject(originalSubject)
-  if (originalKeywords) newPdfDoc.setKeywords(originalKeywords)
+  if (originalKeywords) newPdfDoc.setKeywords(Array.isArray(originalKeywords) ? originalKeywords : [originalKeywords])
   if (originalCreator) newPdfDoc.setCreator(originalCreator)
   if (originalProducer) newPdfDoc.setProducer(originalProducer)
 

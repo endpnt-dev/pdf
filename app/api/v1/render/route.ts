@@ -91,7 +91,7 @@ export const POST = withAuth(async (request: NextRequest, context) => {
         if (format === 'png') {
           imageData = canvas.toBuffer('image/png')
         } else {
-          imageData = canvas.toBuffer('image/jpeg', { quality: 0.85 })
+          imageData = canvas.toBuffer('image/jpeg', 0.85)
         }
 
         const base64Image = imageData.toString('base64')
