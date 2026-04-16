@@ -29,17 +29,14 @@ export const POST = withAuth(async (request: NextRequest, context) => {
   const compressionSettings = {
     low: {
       useObjectStreams: true,
-      addDefaultPrefixToObjectStreams: true,
       objectsPerTick: 50,
     },
     medium: {
       useObjectStreams: true,
-      addDefaultPrefixToObjectStreams: true,
       objectsPerTick: 500,
     },
     high: {
       useObjectStreams: true,
-      addDefaultPrefixToObjectStreams: true,
       objectsPerTick: 5000,
     }
   }
@@ -50,7 +47,6 @@ export const POST = withAuth(async (request: NextRequest, context) => {
   // More aggressive image downsampling with sharp will be added in v1.1
   const compressedBytes = await pdfDoc.save({
     useObjectStreams: settings.useObjectStreams,
-    addDefaultPrefixToObjectStreams: settings.addDefaultPrefixToObjectStreams,
     objectsPerTick: settings.objectsPerTick,
   })
 

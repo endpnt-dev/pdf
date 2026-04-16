@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  serverExternalPackages: ['@napi-rs/canvas', 'pdfjs-dist'],
+  reactStrictMode: true,
+  serverExternalPackages: [
+    '@napi-rs/canvas',
+    'pdf-lib',
+    'pdf-parse',
+    'pdfjs-dist',
+    'sharp',
+  ],
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -13,6 +21,6 @@ const nextConfig = {
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
