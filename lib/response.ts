@@ -69,6 +69,9 @@ export function getErrorMessage(code: ErrorCode): string {
     PROCESSING_FAILED: 'Failed to process PDF. Please try again.',
     INTERNAL_ERROR: 'Internal server error. Please try again later.',
     NOT_IMPLEMENTED: 'This endpoint is not yet implemented.',
+    NOT_ENCRYPTED: 'PDF is not encrypted.',
+    INVALID_LANGUAGE: 'Invalid or unsupported language code for OCR.',
+    PROCESSING_TIMEOUT: 'Processing timed out. Try a smaller file or reduce complexity.',
   }
   return messages[code]
 }

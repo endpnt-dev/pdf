@@ -1,10 +1,14 @@
 {
+  "buildCommand": "apt-get update && apt-get install -y qpdf && npm run build",
   "functions": {
-    "app/api/v1/render/route.ts": { "maxDuration": 10, "memory": 1024 },
-    "app/api/v1/compress/route.ts": { "maxDuration": 10 },
-    "app/api/v1/merge/route.ts": { "maxDuration": 10 },
-    "app/api/v1/split/route.ts": { "maxDuration": 10 },
-    "app/api/v1/extract/images/route.ts": { "maxDuration": 10, "memory": 1024 },
-    "app/api/v1/extract/text/route.ts": { "maxDuration": 10 }
+    "app/api/v1/encrypt/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/decrypt/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/extract/ocr/route.ts": { "maxDuration": 300, "memory": 3008 },
+    "app/api/v1/render/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/compress/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/merge/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/split/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/extract/images/route.ts": { "maxDuration": 60, "memory": 1024 },
+    "app/api/v1/extract/text/route.ts": { "maxDuration": 60, "memory": 1024 }
   }
 }

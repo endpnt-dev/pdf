@@ -8,18 +8,14 @@ const nextConfig = {
       'pdf-parse',
       'pdfjs-dist',
       'sharp',
+      'node-qpdf2',
+      'scribe.js-ocr',
     ],
   },
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-      {
-        protocol: 'http',
-        hostname: '**',
-      },
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' },
     ],
   },
   webpack: (config, { isServer }) => {
@@ -27,6 +23,8 @@ const nextConfig = {
       config.externals = [
         ...(config.externals || []),
         { '@napi-rs/canvas': 'commonjs @napi-rs/canvas' },
+        { 'node-qpdf2': 'commonjs node-qpdf2' },
+        { 'scribe.js-ocr': 'commonjs scribe.js-ocr' },
       ];
     }
     return config;
