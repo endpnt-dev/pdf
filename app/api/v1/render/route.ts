@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { PDFDocument } from 'pdf-lib'
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf'
+import * as pdfjsLib from 'pdfjs-dist'
 import { createCanvas, CanvasRenderingContext2D } from '@napi-rs/canvas'
 import { withAuth } from '@/lib/handlers'
 import { successResponse } from '@/lib/response'

@@ -11,6 +11,10 @@ const nextConfig = {
       'node-qpdf2',
       'scribe.js-ocr',
     ],
+    outputFileTracingIncludes: {
+      '/api/v1/encrypt': ['./bin/qpdf/**/*'],
+      '/api/v1/decrypt': ['./bin/qpdf/**/*'],
+    },
   },
   images: {
     remotePatterns: [

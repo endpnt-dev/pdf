@@ -1,11 +1,30 @@
+// Set qpdf binary path before importing node-qpdf2
+// Binary is bundled in bin/qpdf/ and traced into the function by Next.js
+import { join } from 'path';
+import { chmodSync, existsSync } from 'fs';
+
+// Only override if QPDF_PATH isn't already set (allows external override)
+if (!process.env.QPDF_PATH) {
+  // In Vercel serverless, __dirname is inside .next/server/chunks/...
+  // process.cwd() is the function root, where bin/ lives after tracing
+  process.env.QPDF_PATH = join(process.cwd(), 'bin', 'qpdf', 'qpdf');
+}
+
+// Ensure the qpdf binary is executable at runtime
+// Tracing preserves files but may not preserve the +x bit
+try {
+  if (existsSync(process.env.QPDF_PATH)) {
+    chmodSync(process.env.QPDF_PATH, 0o755);
+  }
+} catch (err) {
+  // Log but don't crash — attempt to continue
+  console.warn('Could not chmod qpdf binary:', err);
+}
+
 import { encrypt as qpdfEncrypt, decrypt as qpdfDecrypt, info as qpdfInfo } from 'node-qpdf2';
 import { randomUUID } from 'crypto';
 import { writeFile, readFile, unlink } from 'fs/promises';
 import { tmpdir } from 'os';
-import { join } from 'path';
-
-// If Option B (bundled binary), respect QPDF_PATH env var
-// If Option A (apt install), qpdf is in system PATH, no config needed
 
 type QpdfRestrictions = {
   print?: 'y' | 'n' | 'low' | 'full';
