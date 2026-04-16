@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
+import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib'
 import { withAuth } from '@/lib/handlers'
 import { successResponse } from '@/lib/response'
 import { loadPdf } from '@/lib/pdf-loader'
@@ -127,7 +127,7 @@ export const POST = withAuth(async (request: NextRequest, context) => {
         font,
         color: textColor,
         opacity: opacity / 100,
-        rotate: rotation ? { angle: rotation } : undefined,
+        rotate: rotation ? degrees(rotation) : undefined,
       })
 
     } else if (watermarkImage) {
@@ -150,7 +150,7 @@ export const POST = withAuth(async (request: NextRequest, context) => {
         width: imageDims.width,
         height: imageDims.height,
         opacity: opacity / 100,
-        rotate: rotation ? { angle: rotation } : undefined,
+        rotate: rotation ? degrees(rotation) : undefined,
       })
     }
 
