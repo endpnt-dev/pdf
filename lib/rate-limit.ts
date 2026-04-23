@@ -36,7 +36,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:pdf:free',
+        prefix: 'endpnt:ratelimit:pdf:free',
       }),
       starter: new Ratelimit({
         redis: redisInstance,
@@ -45,7 +45,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:pdf:starter',
+        prefix: 'endpnt:ratelimit:pdf:starter',
       }),
       pro: new Ratelimit({
         redis: redisInstance,
@@ -54,7 +54,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:pdf:pro',
+        prefix: 'endpnt:ratelimit:pdf:pro',
       }),
       enterprise: new Ratelimit({
         redis: redisInstance,
@@ -63,7 +63,7 @@ function initializeRateLimiters() {
           '1 m'
         ),
         analytics: true,
-        prefix: 'rl:pdf:enterprise',
+        prefix: 'endpnt:ratelimit:pdf:enterprise',
       }),
     }
   }
